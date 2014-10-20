@@ -1,0 +1,131 @@
+8
+
+dir
+217
+https://svn.code.sf.net/p/icudi/code/trunk/Durandal
+https://svn.code.sf.net/p/icudi/code
+
+
+
+2013-11-03T09:01:37.041505Z
+217
+rolanddahlem
+has-props
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+35d3c79b-b837-0410-b39b-dd7cf7cb8905
+
+.classpath
+file
+
+
+
+
+2013-10-05T13:08:02.000000Z
+6c094a1e72258481d21d2ef20bc0880d
+2013-10-06T15:47:25.287754Z
+193
+rolanddahlem
+
+.project
+file
+
+
+
+
+2013-10-03T16:40:36.000000Z
+bc87b1239c1d73140aa3daacddd9ec0d
+2013-10-06T15:47:25.287754Z
+193
+rolanddahlem
+
+.settings
+dir
+
+AndroidManifest.xml
+file
+
+
+
+
+2013-10-13T17:14:30.000000Z
+cc50c7a169c68a7408e77c47f4da0b61
+2013-10-13T18:34:15.121701Z
+212
+rolanddahlem
+
+assets
+dir
+
+classdiagramm.ucls
+file
+
+
+
+
+2013-10-13T15:27:41.000000Z
+8c87612003a116840831d50ed813a48d
+2013-10-13T15:29:04.654294Z
+210
+rolanddahlem
+
+gen
+dir
+
+ic_launcher-web.png
+file
+
+
+
+
+2013-10-03T16:40:37.000000Z
+add446c565b29047b9bd12e31de332a9
+2013-10-06T15:47:25.287754Z
+193
+rolanddahlem
+has-props
+
+libs
+dir
+
+proguard-project.txt
+file
+
+
+
+
+2013-10-03T16:40:36.000000Z
+18bfe77c342b4698f1cef19cf8d918e2
+2013-10-06T15:47:25.287754Z
+193
+rolanddahlem
+
+project.properties
+file
+
+
+
+
+2013-10-05T13:08:04.000000Z
+22ddf6b42a83297bcb57da9c087c4ab6
+2013-10-06T15:47:25.287754Z
+193
+rolanddahlem
+
+res
+dir
+
+src
+dir
+

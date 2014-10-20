@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/p/icudi/code/!svn/ver/215/trunk/DurandalCore/src/tk/icudi/durandal/core/logic
+END
+Monster.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/p/icudi/code/!svn/ver/207/trunk/DurandalCore/src/tk/icudi/durandal/core/logic/Monster.java
+END
+BTMessage.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/p/icudi/code/!svn/ver/213/trunk/DurandalCore/src/tk/icudi/durandal/core/logic/BTMessage.java
+END
+Serializer.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/p/icudi/code/!svn/ver/213/trunk/DurandalCore/src/tk/icudi/durandal/core/logic/Serializer.java
+END
+Resources.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/p/icudi/code/!svn/ver/188/trunk/DurandalCore/src/tk/icudi/durandal/core/logic/Resources.java
+END
+Tower.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/p/icudi/code/!svn/ver/207/trunk/DurandalCore/src/tk/icudi/durandal/core/logic/Tower.java
+END
+CommandObserver.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/p/icudi/code/!svn/ver/198/trunk/DurandalCore/src/tk/icudi/durandal/core/logic/CommandObserver.java
+END
+Point.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/p/icudi/code/!svn/ver/207/trunk/DurandalCore/src/tk/icudi/durandal/core/logic/Point.java
+END
+BoardModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/p/icudi/code/!svn/ver/207/trunk/DurandalCore/src/tk/icudi/durandal/core/logic/BoardModel.java
+END
+StartOptions.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/p/icudi/code/!svn/ver/198/trunk/DurandalCore/src/tk/icudi/durandal/core/logic/StartOptions.java
+END
+Message.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/p/icudi/code/!svn/ver/213/trunk/DurandalCore/src/tk/icudi/durandal/core/logic/Message.java
+END
+ShortMessage.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/p/icudi/code/!svn/ver/212/trunk/DurandalCore/src/tk/icudi/durandal/core/logic/ShortMessage.java
+END
+GameLogic.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/p/icudi/code/!svn/ver/201/trunk/DurandalCore/src/tk/icudi/durandal/core/logic/GameLogic.java
+END
+BoardController.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/p/icudi/code/!svn/ver/213/trunk/DurandalCore/src/tk/icudi/durandal/core/logic/BoardController.java
+END
+BresenhamLine.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/p/icudi/code/!svn/ver/200/trunk/DurandalCore/src/tk/icudi/durandal/core/logic/BresenhamLine.java
+END
+NameGenerator.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/p/icudi/code/!svn/ver/199/trunk/DurandalCore/src/tk/icudi/durandal/core/logic/NameGenerator.java
+END

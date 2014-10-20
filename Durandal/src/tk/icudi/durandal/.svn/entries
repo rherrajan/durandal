@@ -1,0 +1,101 @@
+8
+
+dir
+217
+https://svn.code.sf.net/p/icudi/code/trunk/Durandal/src/tk/icudi/durandal
+https://svn.code.sf.net/p/icudi/code
+
+
+
+2013-11-03T09:01:37.041505Z
+217
+rolanddahlem
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+35d3c79b-b837-0410-b39b-dd7cf7cb8905
+
+BluetoothMatchMaker.java
+file
+
+
+
+
+2013-11-03T08:57:12.000000Z
+636cb91b7ccf849791d33b41466dde20
+2013-11-03T09:01:37.041505Z
+217
+rolanddahlem
+
+DurandalMenuActivity.java
+file
+
+
+
+
+2013-11-03T08:47:46.000000Z
+d072de87e935d8ad6379a567f114ee7b
+2013-11-03T09:01:37.041505Z
+217
+rolanddahlem
+
+MenuView.java
+file
+
+
+
+
+2013-11-03T08:22:17.000000Z
+7b208e944a1b8dbe846c0fe7da021eaf
+2013-11-03T08:43:52.724234Z
+216
+rolanddahlem
+
+PlayerBlueToothLocal.java
+file
+
+
+
+
+2013-11-03T08:42:57.000000Z
+d3a899086b9772866a7317f4194682e3
+2013-11-03T08:43:52.724234Z
+216
+rolanddahlem
+
+PlayerBlueToothRemote.java
+file
+
+
+
+
+2013-11-02T14:23:28.000000Z
+abc4a45c57de672db63a4f17fe6f16d9
+2013-11-02T15:07:48.339479Z
+214
+rolanddahlem
+
+bluetooth
+dir
+
+bluetooth2
+dir
+
+
+
+add
+
+internet
+dir
+

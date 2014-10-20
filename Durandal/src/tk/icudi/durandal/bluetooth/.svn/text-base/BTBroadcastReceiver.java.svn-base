@@ -1,0 +1,41 @@
+package tk.icudi.durandal.bluetooth;
+
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Parcelable;
+import android.util.Log;
+
+public class BTBroadcastReceiver extends BroadcastReceiver {
+
+	@Override
+	public void onReceive(Context context, Intent intent) {
+		
+		String action = intent.getAction();
+		
+		Log.d(" --- ", "onReceive: " + action);
+
+		if (BluetoothDevice.ACTION_FOUND.equals(action)) {
+			BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+			System.out.println(" --- Device: " + device.getName() + ", " + device);
+		} else {
+			if (BluetoothDevice.ACTION_UUID.equals(action)) {
+				BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+				Parcelable[] uuidExtra = intent.getParcelableArrayExtra(BluetoothDevice.EXTRA_UUID);
+				for (int i = 0; i < uuidExtra.length; i++) {
+					System.out.println(" --- Device: " + device.getName()+ ", " + device + ", Service: "+ uuidExtra[i].toString());
+				}
+			} else {
+				if (BluetoothAdapter.ACTION_DISCOVERY_STARTED.equals(action)) {
+					System.out.println(" --- Discovery Started...");
+				} else {
+					if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)) {
+						System.out.println(" --- Discovery Finished");
+					}
+				}
+			}
+		}
+	}
+}

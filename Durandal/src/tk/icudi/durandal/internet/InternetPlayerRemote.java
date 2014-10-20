@@ -1,0 +1,113 @@
+//package tk.icudi.durandal.internet;
+//
+//import java.io.UnsupportedEncodingException;
+//import java.net.URLDecoder;
+//import java.util.List;
+//
+//import tk.icudi.durandal.core.logic.BoardController;
+//import tk.icudi.durandal.core.logic.Message;
+//import tk.icudi.durandal.core.logic.Serializer;
+//import tk.icudi.durandal.core.logic.ShortMessage;
+//import tk.icudi.durandal.core.logic.player.Player;
+//import tk.icudi.durandal.core.logic.player.PlayerHuman;
+//
+//public class InternetPlayerRemote extends PlayerHuman implements Player {
+//	
+//	private static final long serialVersionUID = 1L;
+//	
+//	private String name;
+//	
+//	boolean isActive;
+//	
+//	public InternetPlayerRemote(String name) {
+//		this(name, true);
+//	}
+//	
+//	public InternetPlayerRemote() {
+//		this("unknown", false);
+//	}
+//	
+//	public InternetPlayerRemote(String name, boolean isActive) {
+//		this.name = name;
+//		this.isActive = isActive;
+//	}
+//
+//	@Override
+//	public void setBoardController(BoardController boardController) {
+//		super.setBoardController(boardController);
+//	}
+//	
+//	public boolean isRemoteControlled(){
+//		return true;
+//	}
+//
+//	@Override
+//	public boolean isLogicMaster() {
+//		return false;
+//	}
+//	
+//	@Override
+//	public void tick() {
+//		checkForMessages();
+//	}
+//
+//	private void checkForMessages() {
+//		
+//		if(this.isActive){
+//			getCommandsFromRemotePlayer();
+//		} else {
+//			String newPlayer = InternetMessageHandler.getInstance().getUnattendedPlayer();
+//			
+//			if(newPlayer != null){
+//				this.isActive = true;
+//				this.name = newPlayer;
+//				boardController.getModel().setName(name);
+//			}
+//		}
+//		
+//	}
+//
+//	private void getCommandsFromRemotePlayer() {
+//		
+//		String myName = boardController.getModel().getName();
+//		List<Message> messages = InternetMessageHandler.getInstance().fetch(myName);
+//		
+//		if(messages.size() == 0){
+//			return;
+//		}
+//		
+//		// Log.d(" --- ", "process " + messages.size() + " messages" );
+//		
+//		for(Message msg : messages){
+//			// Log.d(" --- ", "msg.getCommand(): " + msg.getCommand() );
+//
+//			if(msg.getUser().equals(myName) == false){
+//				continue;
+//			}
+//
+//			String valueDec;
+//			try {
+//				valueDec = URLDecoder.decode(msg.getValue(), "UTF-8");
+//			} catch (UnsupportedEncodingException e) {
+//				e.printStackTrace();
+//				continue;
+//			}
+//			
+//			ShortMessage shortMessage = Serializer.parcelableFromString(ShortMessage.class, valueDec);
+////			Identifier commandID = Identifier.valueOf(msg.getCommand());
+//			boardController.addPrivateCommand(shortMessage);
+//		}
+//	}
+//
+//	@Override
+//	public void reset() {
+//		isActive = false;
+//		InternetMessageHandler.getInstance().reset();
+//	}
+//	
+//	@Override
+//	public String getName() {
+//		return name;
+//	}
+//	
+//}

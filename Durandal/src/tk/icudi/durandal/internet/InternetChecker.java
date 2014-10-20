@@ -1,0 +1,110 @@
+//package tk.icudi.durandal.internet;
+//
+//import java.util.ArrayList;
+//import java.util.Collections;
+//import java.util.Comparator;
+//import java.util.List;
+//
+//import tk.icudi.durandal.core.logic.Message;
+//import android.support.v4.util.LongSparseArray;
+//import android.util.Log;
+//
+//
+//public class InternetChecker extends Thread {
+//
+//	int timeToSleep;
+//	boolean active;
+//	
+//	private LongSparseArray<Message> attendedMessages;
+//	private LongSparseArray<Message> unattendedMessages;
+//	
+//	public void reset(){
+//		attendedMessages = new LongSparseArray<Message>();
+//		unattendedMessages = new LongSparseArray<Message>();
+//	}
+//	
+//	@Override
+//	public void run() {
+//
+//		while(true){
+//						
+//			if(active){
+//				try{
+//					DownloadTask downloadTask = new DownloadTask();
+//					
+//					long start = System.currentTimeMillis();
+//					
+//					downloadTask.execute();
+//					List<Message> allMessages = downloadTask.get();
+//					
+//					long duration = System.currentTimeMillis() - start;
+//					
+//					if(duration > 10000){
+//						Log.d(" --- ", "download slow. comletion after " + duration + " msec");
+//					}
+//					
+//					append(allMessages);
+//
+//				} catch (Exception e) {
+//					Log.d(" --- ", "Could not get internet information", e);
+//					e.printStackTrace();
+//				}
+//			}
+//			
+//			try {
+//				Thread.sleep(timeToSleep);
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
+//		}
+//	}
+//
+//	private synchronized void append(List<Message> allMessages) {
+//		
+//		if(allMessages == null){
+//			return;
+//		}
+//			
+//		int oldSize = unattendedMessages.size();
+//		for(Message msg : allMessages){
+//			
+//			Message old = attendedMessages.get(msg.getId());
+//			
+//			if(old == null){
+//				unattendedMessages.put(msg.getId(), msg);
+//			}
+//		}
+//		
+//		int added = unattendedMessages.size() - oldSize;
+//		if(added > 0){					
+////			Log.d(" --- ", added + " messages received");
+//		}
+//
+//	}
+//
+//
+//	public synchronized List<Message> fetch(){
+//		
+//		List<Message> newMessages = new ArrayList<Message>();
+//		
+//		for(int i=0; i< unattendedMessages.size(); i++){
+//			Message msg = unattendedMessages.valueAt(i);
+//			newMessages.add(msg);
+//			attendedMessages.put(msg.getId(), msg);
+//		}
+//		
+//		unattendedMessages.clear();
+//		
+//		Comparator<Message> comparator = new Comparator<Message>() {
+//
+//			@Override
+//			public int compare(Message lhs, Message rhs) {
+//				return lhs.getTick() - rhs.getTick();
+//			}
+//			
+//		};
+//		Collections.sort(newMessages, comparator);
+//		
+//		return newMessages;
+//	}
+//}

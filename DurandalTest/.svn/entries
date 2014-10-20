@@ -1,0 +1,100 @@
+8
+
+dir
+213
+https://svn.code.sf.net/p/icudi/code/trunk/DurandalTest
+https://svn.code.sf.net/p/icudi/code
+
+
+
+2013-11-02T15:06:32.352779Z
+213
+rolanddahlem
+has-props
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+35d3c79b-b837-0410-b39b-dd7cf7cb8905
+
+.classpath
+file
+
+
+
+
+2013-10-13T09:22:39.000000Z
+fd87734db6bfebf85dd6ca16dd8499c4
+2013-10-13T10:49:06.477868Z
+206
+rolanddahlem
+
+.project
+file
+
+
+
+
+2013-10-13T09:22:39.000000Z
+65257b5628b3812f92ffd1a9415fce5f
+2013-10-13T10:49:06.477868Z
+206
+rolanddahlem
+
+.settings
+dir
+
+AndroidManifest.xml
+file
+
+
+
+
+2013-10-13T09:22:39.000000Z
+25b3a9def744185033c12b4f97bd87e1
+2013-10-13T10:49:06.477868Z
+206
+rolanddahlem
+
+assets
+dir
+
+proguard-project.txt
+file
+
+
+
+
+2013-10-13T09:22:39.000000Z
+18bfe77c342b4698f1cef19cf8d918e2
+2013-10-13T10:49:06.477868Z
+206
+rolanddahlem
+
+project.properties
+file
+
+
+
+
+2013-10-13T09:22:39.000000Z
+9c57dcdf382c16ec1e6ff4d497fa3a84
+2013-10-13T10:49:06.477868Z
+206
+rolanddahlem
+
+res
+dir
+
+src
+dir
+

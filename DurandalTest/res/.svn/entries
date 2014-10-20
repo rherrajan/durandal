@@ -1,0 +1,46 @@
+8
+
+dir
+213
+https://svn.code.sf.net/p/icudi/code/trunk/DurandalTest/res
+https://svn.code.sf.net/p/icudi/code
+
+
+
+2013-10-13T10:49:06.477868Z
+206
+rolanddahlem
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+35d3c79b-b837-0410-b39b-dd7cf7cb8905
+
+drawable-hdpi
+dir
+
+drawable-ldpi
+dir
+
+drawable-mdpi
+dir
+
+drawable-xhdpi
+dir
+
+layout
+dir
+
+values
+dir
+

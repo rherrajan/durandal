@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">DurandalCore</string>
+    <string name="pve_1">lvl1</string>
+    <string name="pve_2">lvl2</string>
+    <string name="pve_3">lvl3</string>
+    <string name="pve_4">lvl4</string>
+    <string name="pvp_device">2 player</string>
+    <string name="background_content">welcome</string>
+
+</resources>

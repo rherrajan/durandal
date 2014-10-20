@@ -1,0 +1,41 @@
+8
+
+dir
+215
+https://svn.code.sf.net/p/icudi/code/trunk/DurandalCore/libs
+https://svn.code.sf.net/p/icudi/code
+
+
+
+2013-10-06T15:41:18.675589Z
+188
+rolanddahlem
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+35d3c79b-b837-0410-b39b-dd7cf7cb8905
+
+android-support-v4.jar
+file
+
+
+
+
+2013-09-08T10:13:22.000000Z
+5dce8843261486180715e459d953885d
+2013-10-06T15:41:18.675589Z
+188
+rolanddahlem
+has-props
+

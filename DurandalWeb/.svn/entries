@@ -1,0 +1,61 @@
+8
+
+dir
+198
+https://svn.code.sf.net/p/icudi/code/trunk/DurandalWeb
+https://svn.code.sf.net/p/icudi/code
+
+
+
+2013-10-12T11:26:14.174738Z
+198
+rolanddahlem
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+35d3c79b-b837-0410-b39b-dd7cf7cb8905
+
+.classpath
+file
+
+
+
+
+2013-10-03T16:18:36.000000Z
+5e38bc8edf522378d12b8b5bbe56b5bb
+2013-10-06T15:53:16.883418Z
+195
+rolanddahlem
+
+.project
+file
+
+
+
+
+2013-10-03T16:18:37.000000Z
+eac50e1b8965730807a1aba16e125d37
+2013-10-06T15:53:16.883418Z
+195
+rolanddahlem
+
+.settings
+dir
+
+src
+dir
+
+war
+dir
+

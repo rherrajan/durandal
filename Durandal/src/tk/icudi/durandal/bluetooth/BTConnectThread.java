@@ -1,0 +1,78 @@
+//package tk.icudi.durandal.bluetooth;
+//
+//import java.io.IOException;
+//import java.util.UUID;
+//
+//import android.bluetooth.BluetoothAdapter;
+//import android.bluetooth.BluetoothDevice;
+//import android.bluetooth.BluetoothSocket;
+//import android.util.Log;
+//
+//public abstract class BTConnectThread extends Thread {
+//	
+//	private static final String TAG = " --- ";
+//	
+//	private final BluetoothSocket mmSocket;
+//    private final BluetoothDevice mmDevice;
+// 
+//    public BTConnectThread(BluetoothAdapter mBluetoothAdapter, BluetoothDevice device, UUID uuid) {
+//        // Use a temporary object that is later assigned to mmSocket,
+//        // because mmSocket is final
+//        BluetoothSocket tmp = null;
+//        mmDevice = device;
+// 
+//        // Get a BluetoothSocket to connect with the given BluetoothDevice
+//        try {
+//            // MY_UUID is the app's UUID string, also used by the server code
+//        	System.out.println(" --- MY_UUID: " + uuid);
+//            tmp = device.createRfcommSocketToServiceRecord(uuid);
+//        } catch (IOException e) {
+//        	Log.e(TAG, "Konnte Socket nicht erstellen", e);
+//        }
+//        mmSocket = tmp;
+//        
+//        // Cancel discovery because it will slow down the connection
+//        // mBluetoothAdapter.cancelDiscovery(); //Caused by: java.lang.SecurityException: Need BLUETOOTH_ADMIN permission: Neither user 10160 nor current process has android.permission.BLUETOOTH_ADMIN.
+//
+//    }
+// 
+//    @Override
+//	public void run() {
+//
+// 
+//        try {
+//            // Connect the device through the socket. This will block until it succeeds or throws an exception
+//        	Log.d(TAG," --- establishing connection to " + mmDevice.getName() + " ... ");
+//            mmSocket.connect();
+//            Log.d(TAG," --- ... connection to " + mmDevice.getName() + " established");
+//            
+//            // Do work to manage the connection (in a separate thread)
+//            onConnectionEstablished(mmSocket);
+//            
+//        } catch (IOException e) {
+//        	
+//        	Log.w(TAG," --- could not connect to " + mmDevice.getName(), e);
+//        	
+//            // Unable to connect; close the socket and get out
+//        	cancel();
+//        	
+//            onConnectionError(e);
+//        }
+// 
+//
+//    }
+// 
+//    public void onConnectionError(IOException e){}
+//
+//	public abstract void onConnectionEstablished(BluetoothSocket socket);
+//    
+//    /** Will cancel an in-progress connection, and close the socket */
+//    public void cancel() {
+//        try {
+//            mmSocket.close();
+//        } catch (IOException e) {
+//        	Log.e(TAG, "Konnte Socket nicht schließen", e);
+//        }
+//    }
+//}  
+//

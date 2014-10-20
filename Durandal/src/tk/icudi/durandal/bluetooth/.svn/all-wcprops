@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/p/icudi/code/!svn/ver/217/trunk/Durandal/src/tk/icudi/durandal/bluetooth
+END
+BTConnectionHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/p/icudi/code/!svn/ver/217/trunk/Durandal/src/tk/icudi/durandal/bluetooth/BTConnectionHandler.java
+END
+BTAcceptThread.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/p/icudi/code/!svn/ver/217/trunk/Durandal/src/tk/icudi/durandal/bluetooth/BTAcceptThread.java
+END
+BTConnectThread.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/p/icudi/code/!svn/ver/217/trunk/Durandal/src/tk/icudi/durandal/bluetooth/BTConnectThread.java
+END
+BTConnector.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/p/icudi/code/!svn/ver/217/trunk/Durandal/src/tk/icudi/durandal/bluetooth/BTConnector.java
+END
+BTConnectedThread.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/p/icudi/code/!svn/ver/213/trunk/Durandal/src/tk/icudi/durandal/bluetooth/BTConnectedThread.java
+END
+BTBroadcastReceiver.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/p/icudi/code/!svn/ver/217/trunk/Durandal/src/tk/icudi/durandal/bluetooth/BTBroadcastReceiver.java
+END
+BTConnection.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/p/icudi/code/!svn/ver/213/trunk/Durandal/src/tk/icudi/durandal/bluetooth/BTConnection.java
+END

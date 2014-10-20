@@ -1,0 +1,127 @@
+//package tk.icudi.durandal.bluetooth;
+//
+//import java.io.IOException;
+//import java.io.Serializable;
+//import java.util.HashSet;
+//import java.util.Set;
+//import java.util.UUID;
+//
+//import tk.icudi.durandal.bluetooth2.BTConnectionHandler;
+//import tk.icudi.durandal.core.logic.BTMessage;
+//import android.bluetooth.BluetoothAdapter;
+//import android.bluetooth.BluetoothDevice;
+//import android.bluetooth.BluetoothSocket;
+//import android.util.Log;
+//
+//public abstract class BTConnector<T extends BTMessage> implements Serializable {
+//
+//	private static final long serialVersionUID = 1L;
+//
+//	private static final String TAG = " --- ";
+//	
+//	private transient BluetoothAdapter mBluetoothAdapter;
+//
+//	public BTConnector() {
+//        this.mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+//	}
+//	
+//	public boolean isBluetoothActive() {
+//		
+//        if (mBluetoothAdapter == null) {
+//            // Device does not support Bluetooth
+//        	return false;
+//        }
+//        
+//        if (!mBluetoothAdapter.isEnabled()) {
+//        	return false;
+//        } else {
+//        	return true;
+//        }
+//        
+//	}
+//	
+//	public Set<BluetoothDevice> getDevices(){
+//		
+//		if(mBluetoothAdapter == null){
+//			return new HashSet<BluetoothDevice>();
+//		}
+//		
+//		return mBluetoothAdapter.getBondedDevices();
+//
+//	}
+//	
+//	public void actAsServer(final Set<BTConnectionHandler<T>> btHandler) {
+//
+//		System.out.println(" --- Act As Server --- ");
+//		
+//		BTAcceptThread thread = new BTAcceptThread(mBluetoothAdapter, this.getUUID()){
+//			@Override
+//			public void onConnectionEstablished(BluetoothSocket connection) {
+//				BTConnectedThread<T> thread = new BTConnectedThread<T>(connection, btHandler){
+//					@Override
+//					protected Class<T> getMessageClass() {
+//						return BTConnector.this.getMessageClass();
+//					}
+//				};
+//				thread.start();	
+//				
+//				for(BTConnectionHandler<T> listener : btHandler){
+//					listener.onConnectionEstablished(thread, false);
+//				}
+//			}
+//			
+//			@Override
+//			public void onConnectionError(IOException e) {
+//				for(BTConnectionHandler<T> listener : btHandler){
+//					listener.onConnectionError(e);
+//				}
+//			};
+//			
+//		};
+//		
+//		thread.start();
+//
+//		return;
+//	}
+//		
+//	public void connectToDevice(BluetoothDevice device, final Set<BTConnectionHandler<T>> btHandler) {
+//		
+//		Log.d(TAG," --- connect to device: " + device.getName() + ": " + device.getAddress());
+//
+//		BTConnectThread btConnectThread = new BTConnectThread(mBluetoothAdapter, device, this.getUUID()){
+//			@Override
+//			public void onConnectionEstablished(BluetoothSocket socket) {
+//				System.out.println(" --- Verbindung hergestellt: " + socket);
+//				
+//				BTConnectedThread<T> thread = new BTConnectedThread<T>(socket, btHandler){
+//					@Override
+//					protected Class<T> getMessageClass() {
+//						return BTConnector.this.getMessageClass();
+//					}
+//				};
+//				thread.start();	
+//                
+//				for(BTConnectionHandler<T> listener : btHandler){
+//					listener.onConnectionEstablished(thread, true);
+//				}
+//
+//			}
+//			
+//			@Override
+//			public void onConnectionError(IOException e) {
+//				for(BTConnectionHandler<T> listener : btHandler){
+//					listener.onConnectionError(e);
+//				}
+//			};
+//			
+//		};
+//		
+//		mBluetoothAdapter.cancelDiscovery();
+//		btConnectThread.start();
+//
+//	}
+//
+//	public abstract UUID getUUID();
+//	
+//	protected abstract Class<T> getMessageClass();
+//}

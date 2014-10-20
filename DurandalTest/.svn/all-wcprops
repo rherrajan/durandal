@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/p/icudi/code/!svn/ver/213/trunk/DurandalTest
+END
+AndroidManifest.xml
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/p/icudi/code/!svn/ver/206/trunk/DurandalTest/AndroidManifest.xml
+END
+.classpath
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/p/icudi/code/!svn/ver/206/trunk/DurandalTest/.classpath
+END
+.project
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/p/icudi/code/!svn/ver/206/trunk/DurandalTest/.project
+END
+proguard-project.txt
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/p/icudi/code/!svn/ver/206/trunk/DurandalTest/proguard-project.txt
+END
+project.properties
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/p/icudi/code/!svn/ver/206/trunk/DurandalTest/project.properties
+END

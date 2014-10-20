@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/p/icudi/code/!svn/ver/213/trunk/Durandal/src/tk/icudi/durandal/internet
+END
+UploadTask.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/p/icudi/code/!svn/ver/210/trunk/Durandal/src/tk/icudi/durandal/internet/UploadTask.java
+END
+InternetChecker.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/p/icudi/code/!svn/ver/210/trunk/Durandal/src/tk/icudi/durandal/internet/InternetChecker.java
+END
+DownloadTask.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/p/icudi/code/!svn/ver/210/trunk/Durandal/src/tk/icudi/durandal/internet/DownloadTask.java
+END
+InternetMessageHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/p/icudi/code/!svn/ver/213/trunk/Durandal/src/tk/icudi/durandal/internet/InternetMessageHandler.java
+END
+InternetPlayerLocal.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/p/icudi/code/!svn/ver/213/trunk/Durandal/src/tk/icudi/durandal/internet/InternetPlayerLocal.java
+END
+InternetPlayerRemote.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/p/icudi/code/!svn/ver/213/trunk/Durandal/src/tk/icudi/durandal/internet/InternetPlayerRemote.java
+END
+ResetTask.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/p/icudi/code/!svn/ver/210/trunk/Durandal/src/tk/icudi/durandal/internet/ResetTask.java
+END
+InternetPlayerAI.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/p/icudi/code/!svn/ver/210/trunk/Durandal/src/tk/icudi/durandal/internet/InternetPlayerAI.java
+END
