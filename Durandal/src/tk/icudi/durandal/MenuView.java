@@ -14,9 +14,9 @@ import android.widget.Toast;
 
 public class MenuView extends SimpleMenuView {
 	
-	private static final String CONNECT = "bluetooth: connect";
-	private static final String SEARCHING = "Searching...";
-	private static final String SEARCH_AGAIN = "search again";
+//	private static final String CONNECT = "bluetooth: connect";
+//	private static final String SEARCHING = "Searching...";
+//	private static final String SEARCH_AGAIN = "search again";
 
 	// Intent request codes
 	static final int REQUEST_CONNECT_DEVICE = 2;

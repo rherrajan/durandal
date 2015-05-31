@@ -45,7 +45,6 @@ public class Message {
 		this.date = date;
 	}
 
-
 	@Override
 	public String toString() {
 		return "Message [key=" + key + ", user=" + user + ", tick=" + tick

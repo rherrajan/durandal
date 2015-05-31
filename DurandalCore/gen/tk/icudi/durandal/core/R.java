@@ -105,9 +105,9 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name android:buttonBarButtonStyle
+          @attr name tk.icudi.durandal.core:buttonBarButtonStyle
         */
-        public static final int ButtonBarContainerTheme_buttonBarButtonStyle = 1;
+        public static int ButtonBarContainerTheme_buttonBarButtonStyle = 1;
         /**
           <p>This symbol is the offset where the {@link tk.icudi.durandal.core.R.attr#buttonBarStyle}
           attribute's value can be found in the {@link #ButtonBarContainerTheme} array.
@@ -115,8 +115,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name android:buttonBarStyle
+          @attr name tk.icudi.durandal.core:buttonBarStyle
         */
-        public static final int ButtonBarContainerTheme_buttonBarStyle = 0;
+        public static int ButtonBarContainerTheme_buttonBarStyle = 0;
     };
 }
