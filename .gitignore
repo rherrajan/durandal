@@ -2,11 +2,13 @@
 **/.project
 **/.classpath
 **/target/
-bin/
-**/bin
 **/bin/
-**/bin/*
+**/.idea/
 .settings/
 .project
 .classpath
+.iml
 target/
+build/
+bin/
+.idea/
