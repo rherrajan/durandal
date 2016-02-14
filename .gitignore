@@ -4,11 +4,14 @@
 **/target/
 **/bin/
 **/.idea/
+**/.iml
+**/*.iml
 .settings/
 .project
 .classpath
-.iml
+.gradle
 target/
 build/
 bin/
 .idea/
+local.properties
