@@ -8,4 +8,10 @@
         android:layout_width="fill_parent"
         android:layout_height="50dp" />
 
+    <fragment
+        android:name="tk.icudi.durandal.logger.LogFragment"
+        android:id="@+id/log_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 </LinearLayout>

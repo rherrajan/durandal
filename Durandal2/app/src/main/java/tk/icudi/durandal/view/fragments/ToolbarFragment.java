@@ -106,7 +106,7 @@ public class ToolbarFragment extends Fragment {
         // Get the device MAC address
         String mac_address = data.getExtras().getString(DeviceListActivity.EXTRA_DEVICE_ADDRESS);
 
-        Log.d(TAG, " --- mac_address: " + mac_address);
+        Log.d(TAG, "mac_address: " + mac_address);
 
 
         // Get the BluetoothDevice object
