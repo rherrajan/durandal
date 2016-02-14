@@ -6,7 +6,7 @@
     <fragment android:name="tk.icudi.durandal.view.fragments.ToolbarFragment"
         android:id="@+id/fragment_toolbar"
         android:layout_width="fill_parent"
-        android:layout_height="50dp" />
+        android:layout_height="60dp" />
 
     <fragment
         android:name="tk.icudi.durandal.logger.LogFragment"
