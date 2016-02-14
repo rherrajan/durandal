@@ -112,7 +112,7 @@ public class ToolbarFragment extends Fragment {
 
 
 
-    private void connectDevice(Intent data, boolean secure) {
+    private void connectDevice(Intent data, boolean secure)  {
 
         // Get the device MAC address
         String mac_address = data.getExtras().getString(DeviceListActivity.EXTRA_DEVICE_ADDRESS);
@@ -123,6 +123,13 @@ public class ToolbarFragment extends Fragment {
 
         BluetoothDevice device = BluetoothAdapter.getDefaultAdapter().getRemoteDevice(mac_address);
         mConnectionService.connect(device, secure);
+
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         mConnectionService.write("Viele Gruesse ".getBytes());
 
 
