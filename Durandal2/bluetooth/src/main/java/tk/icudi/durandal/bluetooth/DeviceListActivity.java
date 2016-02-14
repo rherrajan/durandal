@@ -95,11 +95,9 @@ public class DeviceListActivity extends Activity {
         if (!mBtAdapter.isEnabled()) {
             Intent enableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivityForResult(enableIntent, REQUEST_ENABLE_BT);
-            return;
-        } else {
-            showDeviceList();
         }
 
+        showDeviceList();
 
     }
 
@@ -107,7 +105,7 @@ public class DeviceListActivity extends Activity {
 
         switch (requestCode) {
             case DeviceListActivity.REQUEST_ENABLE_BT:
-                showDeviceList();
+                updatePairedDeviceList();
         }
     }
 
@@ -121,6 +119,20 @@ public class DeviceListActivity extends Activity {
                 v.setVisibility(View.GONE);
             }
         });
+
+        // Register for broadcasts when a device is discovered
+        IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
+        this.registerReceiver(mReceiver, filter);
+
+        // Register for broadcasts when discovery has finished
+        filter = new IntentFilter(BluetoothAdapter.ACTION_DISCOVERY_FINISHED);
+        this.registerReceiver(mReceiver, filter);
+
+
+        updatePairedDeviceList();
+    }
+
+    private void updatePairedDeviceList(){
 
         // Initialize array adapters. One for already paired devices and
         // one for newly discovered devices
@@ -136,14 +148,6 @@ public class DeviceListActivity extends Activity {
         ListView newDevicesListView = (ListView) findViewById(R.id.new_devices);
         newDevicesListView.setAdapter(mNewDevicesArrayAdapter);
         newDevicesListView.setOnItemClickListener(mDeviceClickListener);
-
-        // Register for broadcasts when a device is discovered
-        IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
-        this.registerReceiver(mReceiver, filter);
-
-        // Register for broadcasts when discovery has finished
-        filter = new IntentFilter(BluetoothAdapter.ACTION_DISCOVERY_FINISHED);
-        this.registerReceiver(mReceiver, filter);
 
         // Get a set of currently paired devices
         Set<BluetoothDevice> pairedDevices = mBtAdapter.getBondedDevices();
@@ -171,6 +175,7 @@ public class DeviceListActivity extends Activity {
 
         // Unregister broadcast listeners
         this.unregisterReceiver(mReceiver);
+
     }
 
     /**
