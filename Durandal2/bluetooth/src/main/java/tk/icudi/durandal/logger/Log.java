@@ -65,6 +65,8 @@ public class Log {
         if (mLogNode != null) {
             mLogNode.println(priority, tag, msg, tr);
         }
+
+        android.util.Log.println(priority, tag, msg);
     }
 
     /**
