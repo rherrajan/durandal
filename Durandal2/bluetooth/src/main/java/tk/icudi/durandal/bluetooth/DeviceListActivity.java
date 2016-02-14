@@ -227,9 +227,12 @@ public class DeviceListActivity extends Activity {
             // Set result and finish this Activity
             setResult(Activity.RESULT_OK, intent);
 
+
+
             finish();
         }
     };
+
 
     /**
      * The BroadcastReceiver that listens for discovered devices and changes the title when
