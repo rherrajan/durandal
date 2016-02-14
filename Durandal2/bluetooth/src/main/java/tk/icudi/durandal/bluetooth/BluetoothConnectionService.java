@@ -411,6 +411,8 @@ public class BluetoothConnectionService {
                 // successful connection or an exception
                 mmSocket.connect();
             } catch (IOException e) {
+
+                Log.e(TAG, "connection error", e);
                 // Close the socket
                 try {
                     mmSocket.close();
