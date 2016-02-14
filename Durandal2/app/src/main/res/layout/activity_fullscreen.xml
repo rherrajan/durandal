@@ -32,8 +32,9 @@
         android:layout_height="match_parent"
         android:fitsSystemWindows="true" >
 
-        <tk.icudi.durandal.core.SimpleMenuView
+        <tk.icudi.durandal.view.fragments.MenuView
             android:id="@+id/fullscreen_content_controls"
+            style="?buttonBarStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center_horizontal"
@@ -43,6 +44,7 @@
 
             <Button
                 android:id="@+id/pve_1"
+                style="?buttonBarButtonStyle"
                 android:layout_width="fill_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -50,6 +52,7 @@
             
             <Button
                 android:id="@+id/pve_2"
+                style="?buttonBarButtonStyle"
                 android:layout_width="fill_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -57,6 +60,7 @@
             
             <Button
                 android:id="@+id/pve_3"
+                style="?buttonBarButtonStyle"
                 android:layout_width="fill_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -64,6 +68,7 @@
             
             <Button
                 android:id="@+id/pve_4"
+                style="?buttonBarButtonStyle"
                 android:layout_width="fill_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -71,12 +76,37 @@
                                     
             <Button
                 android:id="@+id/pvp_device"
+                style="?buttonBarButtonStyle"
                 android:layout_width="fill_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="@string/pvp_device" />
 
-        </tk.icudi.durandal.core.SimpleMenuView>
+            <Button
+                android:id="@+id/pvp_internet"
+                style="?buttonBarButtonStyle"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="@string/pvp_internet" />
+           
+            <Button
+                android:id="@+id/pvp_bluetooth_accept"
+                style="?buttonBarButtonStyle"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="@string/pvp_bluetooth_accept" />
+                  
+            <Button
+                android:id="@+id/pvp_bluetooth_connect"
+                style="?buttonBarButtonStyle"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="@string/pvp_bluetooth_connect" />
+                        
+        </tk.icudi.durandal.view.fragments.MenuView>
 
     </FrameLayout>
 

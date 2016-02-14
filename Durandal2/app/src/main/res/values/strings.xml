@@ -3,6 +3,17 @@
 
     <string name="action_bluetooth">Bluetooth</string>
 
+    <!--  Menue ingame -->
+    <string name="pve_1">lvl1</string>
+    <string name="pve_2">lvl2</string>
+    <string name="pve_3">lvl3</string>
+    <string name="pve_4">lvl4</string>
+    <string name="pvp_device">2 player</string>
+    <string name="pvp_internet">multiplayer</string>
+    <string name="pvp_bluetooth_accept">bluetooth: accept</string>
+    <string name="pvp_bluetooth_connect">bluetooth: connect</string>
+    <string name="background_content">welcome</string>
+
     <!-- BT Connection -->
     <string name="send">Send</string>
     <string name="not_connected">You are not connected to a device</string>

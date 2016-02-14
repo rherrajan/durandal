@@ -24,6 +24,7 @@ import tk.icudi.durandal.R;
 import tk.icudi.durandal.bluetooth.BluetoothConnectionService;
 import tk.icudi.durandal.bluetooth.Constants;
 import tk.icudi.durandal.bluetooth.DeviceListActivity;
+import tk.icudi.durandal.core.DurandalMenuActivity;
 import tk.icudi.durandal.logger.Log;
 
 public class ToolbarFragment extends Fragment {
@@ -132,6 +133,9 @@ public class ToolbarFragment extends Fragment {
 
         mConnectionService.write("Viele Gruesse ".getBytes());
 
+
+        Intent serverIntent = new Intent(getActivity(), DurandalMenuActivity.class);
+        startActivity(serverIntent);
 
 
     }
