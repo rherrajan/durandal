@@ -242,7 +242,6 @@ public class BluetoothConnectionService {
      */
     public void write(byte[] out) {
 
-        Log.d(TAG, " --- write: " + out);
         // Create temporary object
         ConnectedThread r;
         // Synchronize a copy of the ConnectedThread
@@ -254,7 +253,6 @@ public class BluetoothConnectionService {
         // Perform the write unsynchronized
         r.write(out);
 
-        Log.d(TAG, " --- wrote: " + out);
     }
 
     /**
