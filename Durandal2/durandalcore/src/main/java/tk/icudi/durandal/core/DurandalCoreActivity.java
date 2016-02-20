@@ -20,17 +20,14 @@ public class DurandalCoreActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		aktivateGameFragment();
+		activateGameFragment();
 	}
 
-	private void aktivateGameFragment(){
-
+	private void activateGameFragment(){
 		CoreFragment fragment = new CoreFragment();
 		FragmentTransaction transaction = this.getFragmentManager().beginTransaction();
 		transaction.add(fragment, "tagname");
 		transaction.commit();
-
-
 	}
 
 	@Override

@@ -2,6 +2,7 @@ package tk.icudi.durandal.view.fragments;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
@@ -21,6 +22,7 @@ import tk.icudi.durandal.bluetooth.DeviceListActivity;
 import tk.icudi.durandal.controller.BTConnection;
 import tk.icudi.durandal.controller.PlayerBlueToothLocal;
 import tk.icudi.durandal.controller.PlayerBlueToothRemote;
+import tk.icudi.durandal.core.CoreFragment;
 import tk.icudi.durandal.core.DurandalCoreActivity;
 import tk.icudi.durandal.core.logic.ShortMessage;
 import tk.icudi.durandal.core.logic.StartOptions;
@@ -121,13 +123,15 @@ public class MultiplayerFragment extends Fragment {
 
             }
 
-            protected void startGame(StartOptions options) {
+            private void startGame(StartOptions options) {
                 Log.d(TAG, " Game started: " + options);
-                Intent intent = new Intent(getActivity(), DurandalCoreActivity.class);
-                intent.putExtra(StartOptions.START_OPTIONS_MESSAGE, options);
-
-                startActivityForResult(intent, 0);
+                CoreFragment fragment = new CoreFragment();
+                FragmentTransaction transaction = getActivity().getFragmentManager().beginTransaction();
+                transaction.add(fragment, "tagname");
+                transaction.commit();
             }
+
+
         });
 
 
