@@ -17,7 +17,6 @@ public class PlayerBlueToothLocal extends PlayerHuman implements CommandObserver
 
     private String name;
     private boolean iAmTheServer;
-//	private boolean gameStarted = false;
 
     private BTConnection<ShortMessage> connection;
 

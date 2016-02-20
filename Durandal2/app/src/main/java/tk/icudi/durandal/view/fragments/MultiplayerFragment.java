@@ -24,6 +24,7 @@ import tk.icudi.durandal.controller.PlayerBlueToothLocal;
 import tk.icudi.durandal.controller.PlayerBlueToothRemote;
 import tk.icudi.durandal.core.CoreFragment;
 import tk.icudi.durandal.core.DurandalCoreActivity;
+import tk.icudi.durandal.core.logic.Serializer;
 import tk.icudi.durandal.core.logic.ShortMessage;
 import tk.icudi.durandal.core.logic.StartOptions;
 import tk.icudi.durandal.logger.Log;
@@ -31,6 +32,7 @@ import tk.icudi.durandal.logger.Log;
 public class MultiplayerFragment extends Fragment {
 
     private static final String TAG = "MultiplayerFragment";
+    private static final String start_message = "Start_the_game_NOW";
 
     private static final int REQUEST_PAIR_DEVICE = 1;
 
@@ -109,6 +111,7 @@ public class MultiplayerFragment extends Fragment {
                 }
 
 
+                mConnectionService.write(start_message.getBytes()); // inform the other player
 
                 BTConnection<ShortMessage> connection = new ConnectionWrapper(mConnectionService);
                 boolean youAreTheServer = true;
@@ -117,28 +120,24 @@ public class MultiplayerFragment extends Fragment {
                 StartOptions options = new StartOptions();
                 options.setReleaseCreepAtStart(false);
                 options.addPlayer(local);
-                //options.addPlayer(remote);
+                options.addPlayer(remote);
 
                 startGame(options);
 
             }
 
-            private void startGame(StartOptions options) {
-                Log.d(TAG, " Game started: " + options);
-
-                CoreFragment fragment = new CoreFragment();
-                fragment.setOptions(options);
-
-                FragmentTransaction transaction = getActivity().getFragmentManager().beginTransaction();
-                transaction.add(fragment, "tagname");
-                transaction.commit();
-            }
-
-
         });
+    }
 
+    private void startGame(StartOptions options) {
+        Log.d(TAG, " Game started: " + options);
 
+        CoreFragment fragment = new CoreFragment();
+        fragment.setOptions(options);
 
+        FragmentTransaction transaction = getActivity().getFragmentManager().beginTransaction();
+        transaction.add(fragment, "tagname");
+        transaction.commit();
     }
 
     @Override
@@ -191,11 +190,13 @@ public class MultiplayerFragment extends Fragment {
      */
     private final Handler mHandler = new Handler() {
 
+
         String mConnectedDeviceName;
 
         private void setStatus(CharSequence subTitle) {
             MultiplayerFragment.this.setStatus(subTitle);
         }
+
 
         @Override
         public void handleMessage(Message msg) {
@@ -223,7 +224,30 @@ public class MultiplayerFragment extends Fragment {
                     // construct a string from the valid bytes in the buffer
                     String readMessage = new String(readBuf, 0, msg.arg1);
 
-                    Log.d(TAG, mConnectedDeviceName + ":  " + readMessage);
+                    ShortMessage shortMsg = createMessageFromBytes(readBuf);
+
+                    if(shortMsg != null){
+                        Log.i(TAG, mConnectedDeviceName + " msg:  " + shortMsg);
+                        remote.obtainedMessage(shortMsg);
+                    } else {
+                        Log.i(TAG, mConnectedDeviceName + " raw:  " + readMessage);
+
+                        if(readMessage.equals(start_message)){
+                            BTConnection<ShortMessage> connection = new ConnectionWrapper(mConnectionService);
+                            boolean youAreTheServer = true;
+                            local.onConnectionEstablished(connection, youAreTheServer);
+
+                            StartOptions options = new StartOptions();
+                            options.setReleaseCreepAtStart(false);
+                            options.addPlayer(local);
+                            options.addPlayer(remote);
+
+                            startGame(options);
+                        }
+                    }
+
+
+
 
                     break;
                 case Constants.MESSAGE_DEVICE_NAME:
@@ -237,6 +261,14 @@ public class MultiplayerFragment extends Fragment {
                     Log.d(TAG, "connection manager: " + toastMsg);
                     break;
             }
+        }
+
+        private ShortMessage createMessageFromBytes(byte[] buffer) {
+
+            String stringMessage = new String(buffer);
+            ShortMessage msg = Serializer.parcelableFromString(ShortMessage.class, stringMessage);
+
+            return msg;
         }
     };
 
