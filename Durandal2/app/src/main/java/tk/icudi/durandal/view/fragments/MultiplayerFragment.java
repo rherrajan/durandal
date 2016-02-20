@@ -33,6 +33,7 @@ public class MultiplayerFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mConnectionService = new BluetoothConnectionService(getActivity(), mHandler);
+        mConnectionService.start();
 
         Log.i(TAG, "accepting connections on " + BluetoothAdapter.getDefaultAdapter().getAddress());
 
@@ -134,6 +135,8 @@ public class MultiplayerFragment extends Fragment {
      */
     private final Handler mHandler = new Handler() {
 
+        String mConnectedDeviceName;
+
         private void setStatus(CharSequence subTitle) {
             MultiplayerFragment.this.setStatus(subTitle);
         }
@@ -145,8 +148,7 @@ public class MultiplayerFragment extends Fragment {
                 case Constants.MESSAGE_STATE_CHANGE:
                     switch (msg.arg1) {
                         case BluetoothConnectionService.STATE_CONNECTED:
-
-                            setStatus(getString(R.string.title_connected_to, device.getName()));
+                            setStatus(getString(R.string.title_connected_to, mConnectedDeviceName));
                             break;
                         case BluetoothConnectionService.STATE_CONNECTING:
                             setStatus(getString(R.string.title_connecting));
@@ -165,11 +167,13 @@ public class MultiplayerFragment extends Fragment {
                     // construct a string from the valid bytes in the buffer
                     String readMessage = new String(readBuf, 0, msg.arg1);
 
-                    Log.d(TAG, device.getName() + ":  " + readMessage);
+                    Log.d(TAG, mConnectedDeviceName + ":  " + readMessage);
 
                     break;
                 case Constants.MESSAGE_DEVICE_NAME:
                     // save the connected device's name
+                    mConnectedDeviceName = msg.getData().getString(Constants.DEVICE_NAME);
+                    Toast.makeText(getActivity(), "Connected to " + mConnectedDeviceName, Toast.LENGTH_SHORT).show();
                     break;
                 case Constants.MESSAGE_TOAST:
                     String toastMsg = msg.getData().getString(Constants.TOAST);
