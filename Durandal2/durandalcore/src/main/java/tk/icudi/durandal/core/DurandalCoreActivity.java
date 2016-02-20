@@ -2,6 +2,7 @@ package tk.icudi.durandal.core;
 
 import tk.icudi.durandal.core.logic.GameLogic;
 import tk.icudi.durandal.core.logic.StartOptions;
+import tk.icudi.durandal.core.logic.player.PlayerHuman;
 import tk.icudi.durandal.core.view.GameView;
 import android.app.Activity;
 import android.content.Intent;
@@ -33,26 +34,37 @@ public class DurandalCoreActivity extends Activity {
 		super.onCreate(savedInstanceState);
 
 //		setContentView(R.layout.activity_fullscreen);
+
+		final StartOptions options = getOptions();
 		
-	    Intent intent = getIntent();
-
-	    final StartOptions options = (StartOptions)intent.getExtras().get(StartOptions.START_OPTIONS_MESSAGE);
-
-		if(options != null){			
-			if(options.getPlayers().size() == 0){
-				throw new RuntimeException("no players specified");
-			}
-		} else {
-			throw new RuntimeException("please specify start options");
-		}
-
 		this.logic = new GameLogic(options);
 		this.view = new GameView(this);
 		view.setLogic(logic);
 		
 		setContentView(view);
 	}
-	
+
+	private StartOptions getOptions(){
+
+		Intent intent = getIntent();
+
+		if(intent.getExtras() == null){
+			StartOptions options = new StartOptions();
+			options.addPlayer(new PlayerHuman());
+			return options;
+		}
+
+		final StartOptions options = (StartOptions)intent.getExtras().get(StartOptions.START_OPTIONS_MESSAGE);
+
+		if(options != null){
+			if(options.getPlayers().size() == 0){
+				throw new RuntimeException("no players specified");
+			}
+		} else {
+			throw new RuntimeException("please specify start options");
+		}
+		return options;
+	}
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		
