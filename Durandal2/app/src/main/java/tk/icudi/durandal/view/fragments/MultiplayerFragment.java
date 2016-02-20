@@ -1,6 +1,5 @@
 package tk.icudi.durandal.view.fragments;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
 import android.bluetooth.BluetoothAdapter;
@@ -9,7 +8,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +18,6 @@ import tk.icudi.durandal.R;
 import tk.icudi.durandal.bluetooth.BluetoothConnectionService;
 import tk.icudi.durandal.bluetooth.Constants;
 import tk.icudi.durandal.bluetooth.DeviceListActivity;
-import tk.icudi.durandal.core.*;
 import tk.icudi.durandal.logger.Log;
 
 public class MultiplayerFragment extends Fragment {
@@ -28,7 +25,6 @@ public class MultiplayerFragment extends Fragment {
     private static final String TAG = "MultiplayerFragment";
 
     private static final int REQUEST_PAIR_DEVICE = 1;
-    private static final int REQUEST_CONNECT = 2;
 
     private BluetoothConnectionService mConnectionService;
     private BluetoothDevice device;
@@ -38,13 +34,13 @@ public class MultiplayerFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mConnectionService = new BluetoothConnectionService(getActivity(), mHandler);
 
+        Log.i(TAG, "accepting connections on " + BluetoothAdapter.getDefaultAdapter().getAddress());
+
     }
 
     public AppCompatActivity getAppCompatActivity() {
         return (AppCompatActivity) getActivity();
     }
-
-
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -60,12 +56,30 @@ public class MultiplayerFragment extends Fragment {
             }
         });
 
-        View button_host = getActivity().findViewById(R.id.button_join);
-        button_host.setOnClickListener(new View.OnClickListener() {
+        View button_join = getActivity().findViewById(R.id.button_join);
+        button_join.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
+                if(device == null){
+                    Log.e(TAG, "not paired");
+                    return;
+                }
+
                 Log.d(TAG, "connecting...");
 
                 mConnectionService.connect(device, true);
+            }
+        });
+
+        View button_test = getActivity().findViewById(R.id.button_test_connection);
+        button_test.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Log.d(TAG, "testing connection ...");
+
+                if (mConnectionService.getState() != BluetoothConnectionService.STATE_CONNECTED) {
+                    Log.d(TAG, "not connected");
+                }
+                mConnectionService.write("hi".getBytes());
             }
         });
     }
