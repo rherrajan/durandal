@@ -39,6 +39,7 @@ import java.util.UUID;
  * thread for performing data transmissions when connected.
  */
 public class BluetoothConnectionService {
+
     // Debugging
     private static final String TAG = "BluetoothConnectionService";
 
@@ -415,7 +416,7 @@ public class BluetoothConnectionService {
                 mmSocket.connect();
             } catch (IOException e) {
 
-                Log.e(TAG, "connection error", e);
+                Log.i(TAG, "connection error: " + e.getMessage());
                 // Close the socket
                 try {
                     mmSocket.close();

@@ -12,9 +12,9 @@ import android.util.Log;
 import android.widget.Toast;
 
 import tk.icudi.durandal.R;
+import tk.icudi.durandal.bluetooth.DeviceListActivity;
 import tk.icudi.durandal.controller.BTConnection;
 import tk.icudi.durandal.bluetoothimpl.BluetoothService;
-import tk.icudi.durandal.bluetoothimpl.DeviceListActivity;
 import tk.icudi.durandal.controller.PlayerBlueToothLocal;
 import tk.icudi.durandal.controller.PlayerBlueToothRemote;
 import tk.icudi.durandal.core.DurandalCoreActivity;

@@ -1,7 +1,6 @@
 package tk.icudi.durandal.view.fragments;
 
 import tk.icudi.durandal.R;
-import tk.icudi.durandal.bluetoothimpl.DeviceListActivity;
 import tk.icudi.durandal.core.SimpleMenuView;
 import tk.icudi.durandal.core.logic.StartOptions;
 import android.bluetooth.BluetoothAdapter;

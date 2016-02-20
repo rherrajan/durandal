@@ -10,7 +10,7 @@
 
 
     <Button
-        android:id="@+id/pvp_internet"
+        android:id="@+id/button_pair"
         style="?buttonBarButtonStyle"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
@@ -18,19 +18,19 @@
         android:text="connect" />
 
     <Button
-        android:id="@+id/pvp_bluetooth_accept"
-        style="?buttonBarButtonStyle"
-        android:layout_width="fill_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:text="host" />
-
-    <Button
-        android:id="@+id/pvp_bluetooth_connect"
+        android:id="@+id/button_join"
         style="?buttonBarButtonStyle"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:text="join" />
+
+    <Button
+        android:id="@+id/button_start_game"
+        style="?buttonBarButtonStyle"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="start" />
 
 </LinearLayout>
