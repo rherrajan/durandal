@@ -18,9 +18,11 @@ import tk.icudi.durandal.R;
 import tk.icudi.durandal.bluetooth.BluetoothConnectionService;
 import tk.icudi.durandal.bluetooth.Constants;
 import tk.icudi.durandal.bluetooth.DeviceListActivity;
+import tk.icudi.durandal.controller.BTConnection;
 import tk.icudi.durandal.controller.PlayerBlueToothLocal;
 import tk.icudi.durandal.controller.PlayerBlueToothRemote;
 import tk.icudi.durandal.core.DurandalCoreActivity;
+import tk.icudi.durandal.core.logic.ShortMessage;
 import tk.icudi.durandal.core.logic.StartOptions;
 import tk.icudi.durandal.logger.Log;
 
@@ -104,6 +106,11 @@ public class MultiplayerFragment extends Fragment {
                     return;
                 }
 
+
+
+                BTConnection<ShortMessage> connection = new ConnectionWrapper(mConnectionService);
+                boolean youAreTheServer = true;
+                local.onConnectionEstablished(connection, youAreTheServer);
 
                 StartOptions options = new StartOptions();
                 options.setReleaseCreepAtStart(false);

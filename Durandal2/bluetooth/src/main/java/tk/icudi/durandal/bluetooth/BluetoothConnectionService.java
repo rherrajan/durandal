@@ -30,6 +30,7 @@ import tk.icudi.durandal.logger.Log;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.Serializable;
 import java.util.UUID;
 
 /**
@@ -38,7 +39,7 @@ import java.util.UUID;
  * incoming connections, a thread for connecting with a device, and a
  * thread for performing data transmissions when connected.
  */
-public class BluetoothConnectionService {
+public class BluetoothConnectionService implements Serializable{
 
     // Debugging
     private static final String TAG = "BluetoothConnectionService";
