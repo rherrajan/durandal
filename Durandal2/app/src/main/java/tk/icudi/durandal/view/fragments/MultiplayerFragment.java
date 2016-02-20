@@ -18,6 +18,10 @@ import tk.icudi.durandal.R;
 import tk.icudi.durandal.bluetooth.BluetoothConnectionService;
 import tk.icudi.durandal.bluetooth.Constants;
 import tk.icudi.durandal.bluetooth.DeviceListActivity;
+import tk.icudi.durandal.controller.PlayerBlueToothLocal;
+import tk.icudi.durandal.controller.PlayerBlueToothRemote;
+import tk.icudi.durandal.core.DurandalCoreActivity;
+import tk.icudi.durandal.core.logic.StartOptions;
 import tk.icudi.durandal.logger.Log;
 
 public class MultiplayerFragment extends Fragment {
@@ -29,6 +33,9 @@ public class MultiplayerFragment extends Fragment {
     private BluetoothConnectionService mConnectionService;
     private BluetoothDevice device;
 
+    private PlayerBlueToothLocal local;
+    private PlayerBlueToothRemote remote;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +44,8 @@ public class MultiplayerFragment extends Fragment {
 
         Log.i(TAG, "accepting connections on " + BluetoothAdapter.getDefaultAdapter().getAddress());
 
+        this.local = new PlayerBlueToothLocal("You");
+        this.remote = new PlayerBlueToothRemote("unknown");
     }
 
     public AppCompatActivity getAppCompatActivity() {
@@ -61,7 +70,7 @@ public class MultiplayerFragment extends Fragment {
         button_join.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                if(device == null){
+                if (device == null) {
                     Log.e(TAG, "not paired");
                     return;
                 }
@@ -79,10 +88,43 @@ public class MultiplayerFragment extends Fragment {
 
                 if (mConnectionService.getState() != BluetoothConnectionService.STATE_CONNECTED) {
                     Log.d(TAG, "not connected");
+                    return;
                 }
                 mConnectionService.write("hi".getBytes());
             }
         });
+
+        View button_start = getActivity().findViewById(R.id.button_start_game);
+        button_start.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Log.d(TAG, "start game ...");
+
+                if (mConnectionService.getState() != BluetoothConnectionService.STATE_CONNECTED) {
+                    Log.d(TAG, "not connected");
+                    return;
+                }
+
+
+                StartOptions options = new StartOptions();
+                options.setReleaseCreepAtStart(false);
+                options.addPlayer(local);
+                options.addPlayer(remote);
+
+                startGame(options);
+
+            }
+
+            protected void startGame(StartOptions options) {
+                Log.d(TAG, " Game started: " + options);
+                Intent intent = new Intent(getActivity(), DurandalCoreActivity.class);
+                intent.putExtra(StartOptions.START_OPTIONS_MESSAGE, options);
+
+                startActivityForResult(intent, 0);
+            }
+        });
+
+
+
     }
 
     @Override
@@ -108,7 +150,7 @@ public class MultiplayerFragment extends Fragment {
 
 
     private void connectDevice(String mac_address, boolean secure) {
-        
+
         //String mac_address = data.getExtras().getString(DeviceListActivity.EXTRA_DEVICE_ADDRESS);
 
         Log.d(TAG, "mac_address: " + mac_address);
