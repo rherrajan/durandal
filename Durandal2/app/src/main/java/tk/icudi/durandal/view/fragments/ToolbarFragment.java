@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -31,16 +32,13 @@ public class ToolbarFragment extends Fragment {
 
     private static final String TAG = "ToolbarFragment";
 
-    private AppCompatActivity activity;
     private View toolbar;
     private Menu menu;
 
-    BluetoothConnectionService mConnectionService;
+    private BluetoothConnectionService mConnectionService;
 
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        this.activity = (AppCompatActivity)activity;
+    public AppCompatActivity getAppCompatActivity() {
+        return (AppCompatActivity)getActivity();
     }
 
     @Override
@@ -56,7 +54,7 @@ public class ToolbarFragment extends Fragment {
 
         this.toolbar = inflater.inflate(R.layout.fragment_toolbar, container, false);
         Toolbar toolbar = (Toolbar) this.toolbar.findViewById(R.id.main_toolbar);
-        activity.setSupportActionBar(toolbar);
+        getAppCompatActivity().setSupportActionBar(toolbar);
 
         return this.toolbar;
     }
@@ -206,16 +204,12 @@ public class ToolbarFragment extends Fragment {
                 case Constants.MESSAGE_DEVICE_NAME:
                     // save the connected device's name
                     mConnectedDeviceName = msg.getData().getString(Constants.DEVICE_NAME);
-                    if (null != activity) {
-                        Toast.makeText(activity, "Connected to "
+                        Toast.makeText(getActivity(), "Connected to "
                                 + mConnectedDeviceName, Toast.LENGTH_SHORT).show();
-                    }
                     break;
                 case Constants.MESSAGE_TOAST:
-                    if (null != activity) {
-                        Toast.makeText(activity, msg.getData().getString(Constants.TOAST),
+                        Toast.makeText(getActivity(), msg.getData().getString(Constants.TOAST),
                                 Toast.LENGTH_SHORT).show();
-                    }
                     break;
             }
         }

@@ -224,10 +224,10 @@ public class DeviceListActivity extends Activity {
             Intent intent = new Intent();
             intent.putExtra(EXTRA_DEVICE_ADDRESS, address);
 
+            Log.i(TAG, "choosen device '" + address + "'");
+
             // Set result and finish this Activity
             setResult(Activity.RESULT_OK, intent);
-
-
 
             finish();
         }
