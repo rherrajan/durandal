@@ -1,13 +1,19 @@
 package tk.icudi.durandal.view.activities;
 
+import android.app.FragmentTransaction;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.AttributeSet;
+import android.view.View;
 
 import tk.icudi.durandal.R;
 import tk.icudi.durandal.logger.Log;
 import tk.icudi.durandal.logger.LogFragment;
 import tk.icudi.durandal.logger.LogWrapper;
 import tk.icudi.durandal.logger.MessageOnlyLogFilter;
+import tk.icudi.durandal.view.fragments.GameMenuFragment;
+import tk.icudi.durandal.view.fragments.MultiplayerFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,12 +25,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(tk.icudi.durandal.R.layout.activity_main);
+        showGameMenu();
     }
 
     @Override
     protected  void onStart() {
         super.onStart();
         initializeLogging();
+    }
+
+    private void showGameMenu(){
+        FragmentTransaction transaction = this.getFragmentManager().beginTransaction();
+        transaction.add(R.id.fragment_container, new GameMenuFragment());
+        transaction.commit();
     }
 
     /** Create a chain of targets that will receive log data */

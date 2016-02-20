@@ -9,12 +9,22 @@
         android:layout_width="fill_parent"
         android:layout_height="60dp" />
 
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:id="@+id/fragment_container"
+        android:layout_width="fill_parent"
+        android:layout_weight="1"
+        android:layout_height="match_parent">
+    </RelativeLayout>
+
+    <!--
     <fragment
-        android:name="tk.icudi.durandal.view.fragments.MultiplayerFragment"
+        android:name="tk.icudi.durandal.view.fragments.GameMenuFragment"
         android:id="@+id/fragment_menu"
         android:layout_width="fill_parent"
         android:layout_weight="1"
         android:layout_height="match_parent" />
+-->
 
     <fragment
         android:name="tk.icudi.durandal.logger.LogFragment"

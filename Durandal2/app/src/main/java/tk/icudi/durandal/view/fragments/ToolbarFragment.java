@@ -3,6 +3,7 @@ package tk.icudi.durandal.view.fragments;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
@@ -32,13 +33,15 @@ public class ToolbarFragment extends Fragment {
 
     private static final String TAG = "ToolbarFragment";
 
+    private static final int REQUEST_ENABLE_BT = 1;
+
     private View toolbar;
     private Menu menu;
 
     private BluetoothConnectionService mConnectionService;
 
     public AppCompatActivity getAppCompatActivity() {
-        return (AppCompatActivity)getActivity();
+        return (AppCompatActivity) getActivity();
     }
 
     @Override
@@ -74,9 +77,27 @@ public class ToolbarFragment extends Fragment {
         switch (item.getItemId()) {
 
             case R.id.action_bluetooth: {
-                // Launch the DeviceListActivity to see devices and do scan
-                Intent serverIntent = new Intent(getActivity(), DeviceListActivity.class);
-                startActivityForResult(serverIntent, DeviceListActivity.REQUEST_CONNECT_DEVICE_SECURE);
+
+
+                // Get the local Bluetooth adapter
+
+
+                // If the adapter is null, then Bluetooth is not supported
+                BluetoothAdapter mBtAdapter = BluetoothAdapter.getDefaultAdapter();
+
+                if (mBtAdapter == null) {
+                    Toast.makeText(getActivity(), "Bluetooth is not available", Toast.LENGTH_LONG).show();
+                    return true;
+                }
+
+                if (!mBtAdapter.isEnabled()) {
+                    Log.d(TAG, "enable Bluetooth...");
+                    Intent enableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+                    startActivityForResult(enableIntent, REQUEST_ENABLE_BT);
+                } else {
+                    showMultiplayerMenu();
+                }
+
                 return true;
             }
 
@@ -89,6 +110,7 @@ public class ToolbarFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         switch (requestCode) {
+/*
             case DeviceListActivity.REQUEST_CONNECT_DEVICE_SECURE:
                 // When DeviceListActivity returns with a device to connect
                 if (resultCode == Activity.RESULT_OK) {
@@ -101,17 +123,31 @@ public class ToolbarFragment extends Fragment {
                     connectDevice(data, false);
                 }
                 break;
-            case DeviceListActivity.REQUEST_ENABLE_BT:
+
+*/
+
+            case REQUEST_ENABLE_BT:
                 if (resultCode == Activity.RESULT_OK) {
-                    Log.d(TAG, "Bluetooth is now enabled");
+                    Log.d(TAG, "Bluetooth is enabled");
                 }
+
+                showMultiplayerMenu();
+
         }
     }
 
+    private void showMultiplayerMenu(){
+
+        Log.d(TAG, "showMultiplayerMenu");
+
+        MultiplayerFragment newFragment = new MultiplayerFragment();
+        FragmentTransaction transaction = getAppCompatActivity().getFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, newFragment);
+        transaction.commit();
+    }
 
 
-
-    private void connectDevice(Intent data, boolean secure)  {
+    private void connectDevice(Intent data, boolean secure) {
 
         // Get the device MAC address
         String mac_address = data.getExtras().getString(DeviceListActivity.EXTRA_DEVICE_ADDRESS);
@@ -151,7 +187,7 @@ public class ToolbarFragment extends Fragment {
          * @param resId a string resource ID
          */
         private void setStatus(int resId) {
-            FragmentActivity activity = (FragmentActivity)getActivity();
+            FragmentActivity activity = (FragmentActivity) getActivity();
             if (null == activity) {
                 return;
             }
@@ -168,7 +204,7 @@ public class ToolbarFragment extends Fragment {
          * @param subTitle status
          */
         private void setStatus(CharSequence subTitle) {
-            AppCompatActivity activity = (AppCompatActivity)getActivity();
+            AppCompatActivity activity = (AppCompatActivity) getActivity();
             activity.getSupportActionBar().setSubtitle(subTitle);
         }
 
@@ -204,12 +240,12 @@ public class ToolbarFragment extends Fragment {
                 case Constants.MESSAGE_DEVICE_NAME:
                     // save the connected device's name
                     mConnectedDeviceName = msg.getData().getString(Constants.DEVICE_NAME);
-                        Toast.makeText(getActivity(), "Connected to "
-                                + mConnectedDeviceName, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Connected to "
+                            + mConnectedDeviceName, Toast.LENGTH_SHORT).show();
                     break;
                 case Constants.MESSAGE_TOAST:
-                        Toast.makeText(getActivity(), msg.getData().getString(Constants.TOAST),
-                                Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), msg.getData().getString(Constants.TOAST),
+                            Toast.LENGTH_SHORT).show();
                     break;
             }
         }
@@ -217,7 +253,7 @@ public class ToolbarFragment extends Fragment {
 
     private void setStatus(CharSequence subTitle) {
 
-        AppCompatActivity activity = (AppCompatActivity)getActivity();
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
 
         if (null == activity) {
             return;

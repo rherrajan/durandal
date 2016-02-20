@@ -8,29 +8,44 @@
     android:background="@color/black_overlay"
     android:orientation="vertical">
 
-
     <Button
-        android:id="@+id/pvp_internet"
+        android:id="@+id/pve_1"
         style="?buttonBarButtonStyle"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:text="connect" />
+        android:text="@string/pve_1" />
 
     <Button
-        android:id="@+id/pvp_bluetooth_accept"
+        android:id="@+id/pve_2"
         style="?buttonBarButtonStyle"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:text="host" />
+        android:text="@string/pve_2" />
 
     <Button
-        android:id="@+id/pvp_bluetooth_connect"
+        android:id="@+id/pve_3"
         style="?buttonBarButtonStyle"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:text="join" />
+        android:text="@string/pve_3" />
+
+    <Button
+        android:id="@+id/pve_4"
+        style="?buttonBarButtonStyle"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="@string/pve_4" />
+
+    <Button
+        android:id="@+id/pvp_device"
+        style="?buttonBarButtonStyle"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="@string/pvp_device" />
 
 </LinearLayout>
