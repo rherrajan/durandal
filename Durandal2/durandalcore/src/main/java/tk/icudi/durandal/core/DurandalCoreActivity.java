@@ -5,6 +5,7 @@ import tk.icudi.durandal.core.logic.StartOptions;
 import tk.icudi.durandal.core.logic.player.PlayerHuman;
 import tk.icudi.durandal.core.view.GameView;
 import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,68 +14,35 @@ import android.view.KeyEvent;
 
 public class DurandalCoreActivity extends Activity {
 
-	private GameView view;
-	private GameLogic logic;
-	
-	private Handler handler = new Handler();
-    private Runnable runner = new Runnable() {
-        @Override
-		public void run() {
-        	// 50ms Pause nach einem Tick
-        	boolean changed = logic.tick();
-        	if(changed){
-        		view.invalidate();
-        	}
-            handler.postDelayed(runner, 50);
-        }
-    };
+
     
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-//		setContentView(R.layout.activity_fullscreen);
-
-		final StartOptions options = getOptions();
-		
-		this.logic = new GameLogic(options);
-		this.view = new GameView(this);
-		view.setLogic(logic);
-		
-		setContentView(view);
+		aktivateGameFragment();
 	}
 
-	private StartOptions getOptions(){
+	private void aktivateGameFragment(){
 
-		Intent intent = getIntent();
+		CoreFragment fragment = new CoreFragment();
+		FragmentTransaction transaction = this.getFragmentManager().beginTransaction();
+		transaction.add(fragment, "tagname");
+		transaction.commit();
 
-		if(intent.getExtras() == null){
-			StartOptions options = new StartOptions();
-			options.addPlayer(new PlayerHuman());
-			return options;
-		}
 
-		final StartOptions options = (StartOptions)intent.getExtras().get(StartOptions.START_OPTIONS_MESSAGE);
-
-		if(options != null){
-			if(options.getPlayers().size() == 0){
-				throw new RuntimeException("no players specified");
-			}
-		} else {
-			throw new RuntimeException("please specify start options");
-		}
-		return options;
 	}
+
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		
+
 	    if (keyCode == KeyEvent.KEYCODE_BACK) {
 	    	Log.d(" --- ", "user stopped the game");
 	    	this.setResult(Activity.RESULT_OK, getIntent());
 	    	finish();
 	    	return true;
 	    }
-	    
+
 	    return super.onKeyDown(keyCode, event);
 	}
 	
@@ -83,17 +51,5 @@ public class DurandalCoreActivity extends Activity {
 	    super.onRestoreInstanceState(savedInstanceState);
 	    Log.d("---", "onRestoreInstanceState: " + savedInstanceState);
 	}
-	
-    @Override
-    protected void onResume() {
-        super.onResume();
-        handler.post(runner);
-    }
-    
-    @Override
-    protected void onPause() {
-        super.onPause();
-        handler.removeCallbacks(runner);
-    }
 
 }
