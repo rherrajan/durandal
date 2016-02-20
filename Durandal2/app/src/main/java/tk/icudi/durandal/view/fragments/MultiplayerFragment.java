@@ -117,7 +117,7 @@ public class MultiplayerFragment extends Fragment {
                 StartOptions options = new StartOptions();
                 options.setReleaseCreepAtStart(false);
                 options.addPlayer(local);
-                options.addPlayer(remote);
+                //options.addPlayer(remote);
 
                 startGame(options);
 
@@ -125,7 +125,10 @@ public class MultiplayerFragment extends Fragment {
 
             private void startGame(StartOptions options) {
                 Log.d(TAG, " Game started: " + options);
+
                 CoreFragment fragment = new CoreFragment();
+                fragment.setOptions(options);
+
                 FragmentTransaction transaction = getActivity().getFragmentManager().beginTransaction();
                 transaction.add(fragment, "tagname");
                 transaction.commit();

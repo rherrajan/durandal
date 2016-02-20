@@ -16,6 +16,7 @@ import tk.icudi.durandal.core.view.GameView;
 
 public class CoreFragment extends Fragment {
 
+    private StartOptions options;
     private GameView view;
     private GameLogic logic;
 
@@ -32,13 +33,16 @@ public class CoreFragment extends Fragment {
         }
     };
 
+
+    public void setOptions(StartOptions options){
+        this.options = options;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         Log.i(" --- ", "onCreate: ");
 
         super.onCreate(savedInstanceState);
-
-        final StartOptions options = getOptions();
 
         this.logic = new GameLogic(options);
         this.view = new GameView(getActivity());
@@ -51,28 +55,6 @@ public class CoreFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.i(" --- ", "onCreateView: ");
         return view;
-    }
-
-    private StartOptions getOptions(){
-
-        Intent intent = getActivity().getIntent();
-
-        if(intent.getExtras() == null){
-            StartOptions options = new StartOptions();
-            options.addPlayer(new PlayerHuman());
-            return options;
-        }
-
-        final StartOptions options = (StartOptions)intent.getExtras().get(StartOptions.START_OPTIONS_MESSAGE);
-
-        if(options != null){
-            if(options.getPlayers().size() == 0){
-                throw new RuntimeException("no players specified");
-            }
-        } else {
-            throw new RuntimeException("please specify start options");
-        }
-        return options;
     }
 
     @Override
