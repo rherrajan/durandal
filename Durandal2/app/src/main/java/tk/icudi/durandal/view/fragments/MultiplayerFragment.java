@@ -224,30 +224,32 @@ public class MultiplayerFragment extends Fragment {
                     // construct a string from the valid bytes in the buffer
                     String readMessage = new String(readBuf, 0, msg.arg1);
 
-                    ShortMessage shortMsg = createMessageFromBytes(readBuf);
+                    if(readMessage.equals(start_message)){
+                        BTConnection<ShortMessage> connection = new ConnectionWrapper(mConnectionService);
+                        boolean youAreTheServer = true;
+                        local.onConnectionEstablished(connection, youAreTheServer);
 
-                    if(shortMsg != null){
-                        Log.i(TAG, mConnectedDeviceName + " msg:  " + shortMsg);
-                        remote.obtainedMessage(shortMsg);
-                    } else {
-                        Log.i(TAG, mConnectedDeviceName + " raw:  " + readMessage);
+                        StartOptions options = new StartOptions();
+                        options.setReleaseCreepAtStart(false);
+                        options.addPlayer(local);
+                        options.addPlayer(remote);
 
-                        if(readMessage.equals(start_message)){
-                            BTConnection<ShortMessage> connection = new ConnectionWrapper(mConnectionService);
-                            boolean youAreTheServer = true;
-                            local.onConnectionEstablished(connection, youAreTheServer);
-
-                            StartOptions options = new StartOptions();
-                            options.setReleaseCreepAtStart(false);
-                            options.addPlayer(local);
-                            options.addPlayer(remote);
-
-                            startGame(options);
-                        }
+                        startGame(options);
                     }
 
 
+                    System.out.println(" --- readMessage.length: " + readMessage.length());
 
+                    if(readMessage.length() > 100){
+                        ShortMessage shortMsg = createMessageFromBytes(readBuf);
+
+                        if(shortMsg != null){
+                            Log.i(TAG, mConnectedDeviceName + " msg:  " + shortMsg);
+                            remote.obtainedMessage(shortMsg);
+                        }
+                    } else {
+                        Log.i(TAG, mConnectedDeviceName + " raw:  " + readMessage);
+                    }
 
                     break;
                 case Constants.MESSAGE_DEVICE_NAME:
@@ -266,13 +268,10 @@ public class MultiplayerFragment extends Fragment {
         private ShortMessage createMessageFromBytes(byte[] buffer) {
 
             String stringMessage = new String(buffer);
-            try{
+
                 ShortMessage msg = Serializer.parcelableFromString(ShortMessage.class, stringMessage);
                 return msg;
-            } catch (IllegalArgumentException e){
-                // not a message Object. Propably normal String
-                return null;
-            }
+
 
         }
     };

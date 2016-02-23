@@ -60,8 +60,8 @@ public class Serializer {
     
     public static <T extends Parcelable> T parcelableFromString(Class<T> clazz, String source) {
 
-//    public static ShortMessage parcelableFromString(String source) {
-    	
+    	System.out.println(" --- source: '" + source + "'");
+
 		try{
 	        byte [] data = Base64.decode(source, Base64.URL_SAFE);
 	        
@@ -80,9 +80,9 @@ public class Serializer {
 			parcel.recycle();
 			
 	    	return result;
-	        
+
 		} catch(Exception e){
-			Log.d(" --- ", "conversion error" , e);
+			Log.d(" --- ", "conversion error for: '"+source+"'"  , e);
 			return null;
 		}
 
