@@ -9,7 +9,7 @@
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/pve_1"
+        android:id="@+id/button_pve_1"
         style="?buttonBarButtonStyle"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
@@ -17,7 +17,7 @@
         android:text="@string/pve_1" />
 
     <Button
-        android:id="@+id/pve_2"
+        android:id="@+id/button_pve_2"
         style="?buttonBarButtonStyle"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
@@ -25,7 +25,7 @@
         android:text="@string/pve_2" />
 
     <Button
-        android:id="@+id/pve_3"
+        android:id="@+id/button_pve_3"
         style="?buttonBarButtonStyle"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
@@ -33,7 +33,7 @@
         android:text="@string/pve_3" />
 
     <Button
-        android:id="@+id/pve_4"
+        android:id="@+id/button_pve_4"
         style="?buttonBarButtonStyle"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
@@ -41,7 +41,7 @@
         android:text="@string/pve_4" />
 
     <Button
-        android:id="@+id/pvp_device"
+        android:id="@+id/button_pvp_device"
         style="?buttonBarButtonStyle"
         android:layout_width="fill_parent"
         android:layout_height="0dp"

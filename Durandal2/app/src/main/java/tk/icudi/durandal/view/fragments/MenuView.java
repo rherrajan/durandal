@@ -43,7 +43,8 @@ public class MenuView extends SimpleMenuView {
 //		};
 		 
 	}
-		
+
+
 	@Override
 	protected void onFinishInflate() {
 		super.onFinishInflate();
