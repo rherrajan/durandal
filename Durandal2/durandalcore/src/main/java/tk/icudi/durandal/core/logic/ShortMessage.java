@@ -31,6 +31,9 @@ public class ShortMessage implements Serializable, Parcelable, BTMessage {
 
 	public ShortMessage(Parcel in) {
 		String identifierString = in.readString();
+		if(identifierString == null){
+			throw new IllegalArgumentException("No Message: " + identifierString);
+		}
 		this.identifier = Identifier.valueOf(identifierString);
 		this.objectIsParcelable = in.readByte() == 1;
 		if(objectIsParcelable){

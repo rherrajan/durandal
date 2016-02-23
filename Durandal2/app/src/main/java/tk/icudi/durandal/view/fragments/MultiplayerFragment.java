@@ -266,78 +266,15 @@ public class MultiplayerFragment extends Fragment {
         private ShortMessage createMessageFromBytes(byte[] buffer) {
 
             String stringMessage = new String(buffer);
-            ShortMessage msg = Serializer.parcelableFromString(ShortMessage.class, stringMessage);
+            try{
+                ShortMessage msg = Serializer.parcelableFromString(ShortMessage.class, stringMessage);
+                return msg;
+            } catch (IllegalArgumentException e){
+                // not a message Object. Propably normal String
+                return null;
+            }
 
-            return msg;
         }
     };
 
-/*
-    private final Handler mHandler = new Handler() {
-
-        private String mConnectedDeviceName;
-
-
-        private void setStatus(int resId) {
-            FragmentActivity activity = (FragmentActivity) getActivity();
-            if (null == activity) {
-                return;
-            }
-            final ActionBar actionBar = activity.getActionBar();
-            if (null == actionBar) {
-                return;
-            }
-            actionBar.setSubtitle(resId);
-        }
-
-
-        private void setStatus(CharSequence subTitle) {
-            AppCompatActivity activity = (AppCompatActivity) getActivity();
-            activity.getSupportActionBar().setSubtitle(subTitle);
-        }
-
-        @Override
-        public void handleMessage(Message msg) {
-
-            switch (msg.what) {
-                case Constants.MESSAGE_STATE_CHANGE:
-                    switch (msg.arg1) {
-                        case BluetoothConnectionService.STATE_CONNECTED:
-                            setStatus(getString(R.string.title_connected_to, mConnectedDeviceName));
-                            break;
-                        case BluetoothConnectionService.STATE_CONNECTING:
-                            setStatus(R.string.title_connecting);
-                            break;
-                        case BluetoothConnectionService.STATE_LISTEN:
-                        case BluetoothConnectionService.STATE_NONE:
-                            setStatus(R.string.title_not_connected);
-                            break;
-                    }
-                    break;
-                case Constants.MESSAGE_WRITE:
-//                    byte[] writeBuf = (byte[]) msg.obj;
-                    break;
-                case Constants.MESSAGE_READ:
-                    byte[] readBuf = (byte[]) msg.obj;
-                    // construct a string from the valid bytes in the buffer
-                    String readMessage = new String(readBuf, 0, msg.arg1);
-
-                    Log.d(TAG, mConnectedDeviceName + ":  " + readMessage);
-
-                    break;
-                case Constants.MESSAGE_DEVICE_NAME:
-                    // save the connected device's name
-                    mConnectedDeviceName = msg.getData().getString(Constants.DEVICE_NAME);
-                    Toast.makeText(getActivity(), "Connected to "
-                            + mConnectedDeviceName, Toast.LENGTH_SHORT).show();
-                    break;
-                case Constants.MESSAGE_TOAST:
-                    Toast.makeText(getActivity(), msg.getData().getString(Constants.TOAST),
-                            Toast.LENGTH_SHORT).show();
-                    break;
-            }
-        }
-    };
-
-    */
 }
