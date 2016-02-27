@@ -269,8 +269,9 @@ public class MultiplayerFragment extends Fragment {
 
             String stringMessage = new String(buffer);
 
-                ShortMessage msg = Serializer.parcelableFromString(ShortMessage.class, stringMessage);
-                return msg;
+            ShortMessage msg = Serializer.objectFromString(ShortMessage.class, stringMessage);
+
+            return msg;
 
 
         }

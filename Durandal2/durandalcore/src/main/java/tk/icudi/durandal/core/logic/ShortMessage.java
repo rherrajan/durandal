@@ -109,7 +109,7 @@ public class ShortMessage implements Serializable, Parcelable, BTMessage {
 	@Override
 	public byte[] getBytes() {
 		try {
-			String transportString = Serializer.parcelableToString(this);
+			String transportString = Serializer.objectToString(this);
 			return transportString.getBytes();
 		} catch (IOException e) {
 			e.printStackTrace();

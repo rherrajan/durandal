@@ -100,7 +100,7 @@ public class Message {
 
 	public void setMsg(ShortMessage msg) throws IOException {
 		this.msg = msg;
-		this.value = Serializer.parcelableToString(msg);
+		this.value = Serializer.objectToString(msg);
 	}
 
 }

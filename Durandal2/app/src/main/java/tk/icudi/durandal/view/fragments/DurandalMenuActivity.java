@@ -124,8 +124,8 @@ public class DurandalMenuActivity extends Activity {
 		private ShortMessage createMessageFromBytes(byte[] buffer) {
 		
 			String stringMessage = new String(buffer);
-			ShortMessage msg = Serializer.parcelableFromString(ShortMessage.class, stringMessage);
-	
+			ShortMessage msg = Serializer.objectFromString(ShortMessage.class, stringMessage);
+
 			return msg;
 		}
 	};
