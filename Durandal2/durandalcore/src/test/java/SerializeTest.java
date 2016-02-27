@@ -7,9 +7,8 @@ import tk.icudi.durandal.core.logic.Monster;
 import tk.icudi.durandal.core.logic.Serializer;
 import tk.icudi.durandal.core.logic.ShortMessage;
 import tk.icudi.durandal.core.logic.ShortMessage.Identifier;
-import android.test.AndroidTestCase;
 
-public class SerializeTest extends AndroidTestCase {
+public class SerializeTest {
 
 	public void testSerializeResetGame() throws Exception {
 		ShortMessage sourceMsg = new ShortMessage(Identifier.resetGame, null);
