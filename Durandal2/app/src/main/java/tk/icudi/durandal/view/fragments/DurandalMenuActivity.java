@@ -68,14 +68,7 @@ public class DurandalMenuActivity extends Activity {
 					options.addPlayer(remote);
 					
 					startGame(options);
-					
-					// TODO: Spiel starten
-					/*
-					 * 
-					 * 
-					 * 
-					 * 
-					 */
+
 					break;
 				case BluetoothService.STATE_CONNECTING:
 					setStatus(R.string.title_connecting);				
