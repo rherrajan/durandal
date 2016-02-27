@@ -141,6 +141,7 @@ public class GameLogic implements Serializable {
 			if(message.identifier == Identifier.resetGame){
 				System.out.println(" --- resetGame --- ");
 				this.reset();
+				continue;
 			}
 			
 			if(board.getModel().isFinished()){
