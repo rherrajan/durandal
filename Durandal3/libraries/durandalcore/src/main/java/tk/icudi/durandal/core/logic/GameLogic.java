@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import android.util.Log;
 import tk.icudi.durandal.core.logic.BoardModel.GameResult;
 import tk.icudi.durandal.core.logic.ShortMessage.Identifier;
 import tk.icudi.durandal.core.logic.player.Player;
-import android.util.Log;
 
 
 public class GameLogic implements Serializable {

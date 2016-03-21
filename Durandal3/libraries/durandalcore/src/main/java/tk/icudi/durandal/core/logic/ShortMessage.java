@@ -2,7 +2,6 @@ package tk.icudi.durandal.core.logic;
 
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.IllegalFormatException;
 
 import android.os.Parcel;
 import android.os.Parcelable;

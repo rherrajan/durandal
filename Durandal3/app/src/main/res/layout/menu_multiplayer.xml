@@ -1,0 +1,44 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fullscreen_content_controls"
+    style="?buttonBarStyle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom|center_horizontal"
+    android:background="@color/black_overlay"
+    android:orientation="vertical">
+
+
+    <Button
+        android:id="@+id/button_pair"
+        style="?buttonBarButtonStyle"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="connect" />
+
+    <Button
+        android:id="@+id/button_join"
+        style="?buttonBarButtonStyle"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="join" />
+
+    <Button
+        android:id="@+id/button_test_connection"
+        style="?buttonBarButtonStyle"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="test" />
+
+    <Button
+        android:id="@+id/button_start_game"
+        style="?buttonBarButtonStyle"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="start" />
+
+</LinearLayout>

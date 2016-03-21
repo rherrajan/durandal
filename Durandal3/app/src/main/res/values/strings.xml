@@ -1,0 +1,31 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Durandal</string>
+
+    <string name="action_bluetooth">Bluetooth</string>
+
+    <!--  Menue ingame -->
+    <string name="pve_1">lvl1</string>
+    <string name="pve_2">lvl2</string>
+    <string name="pve_3">lvl3</string>
+    <string name="pve_4">lvl4</string>
+    <string name="pvp_device">2 player</string>
+    <string name="pvp_internet">multiplayer</string>
+    <string name="pvp_bluetooth_accept">bluetooth: accept</string>
+    <string name="pvp_bluetooth_connect">bluetooth: connect</string>
+    <string name="background_content">welcome</string>
+
+    <!-- BT Connection -->
+    <string name="send">Send</string>
+    <string name="not_connected">You are not connected to a device</string>
+    <string name="bt_not_enabled_leaving">Bluetooth was not enabled. Leaving Bluetooth Chat.</string>
+    <string name="title_connecting">connecting...</string>
+    <string name="title_paired_with">paired with <xliff:g id="device_name">%1$s</xliff:g></string>
+    <string name="title_connected_to">connected to <xliff:g id="device_name">%1$s</xliff:g></string>
+    <string name="title_not_connected">not connected</string>
+
+    <!-- BT Options Menu -->
+    <string name="secure_connect">Connect a device - Secure</string>
+    <string name="insecure_connect">Connect a device - Insecure</string>
+    <string name="discoverable">Make discoverable</string>
+
+</resources>
